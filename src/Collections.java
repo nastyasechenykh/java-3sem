@@ -5,40 +5,34 @@ import java.util.*;
 
 public class Collections {
     public static void main(String[] args) throws Exception {
-        ArrayList<String> l1 = new ArrayList<>();
-        ArrayList<String> l2 = new ArrayList<>();
-        ArrayList<String> l3 = new ArrayList<>();
-        ArrayList<String> l4 = new ArrayList<>();
-        l1.add("a");
-        l1.add("b");
-        l1.add("c");
-        l2.add("э");
-        l3.add("ba");
-        l3.add("be");
-        l3.add("le");
-        l3.add("kA");
-        l4.add("p");
-        l4.add("q");
-        l4.add("e");
-        l4.add("4");
-        l4.add("k");
-        l4.add("5");
+        List<String> l1 = List.of("a", "b", "c");
+        List<String> l2 = List.of("э");
+        List<String> l3 = new ArrayList<>(List.of("ba", "be", "le", "kA"));
+        List<String> l4 = new ArrayList<>(List.of("p", "q", "e", "4", "k", "5"));
 
         System.out.println("n. 1");
         System.out.println(makeList());
         System.out.println("n. 2");
-        joinLists(l1, l2);
+        printList(l1);
+        System.out.println("n. 3");
+        printListWithIndexes(l1);
         System.out.println("n. 4");
-        clearReverseList(l3); //функция clearReverseList реализована без использования метода size
-        reverseList(l3);
+        List<String> l1plusL2 = joinLists(l1, l2);
+        System.out.println(l1plusL2);;
         System.out.println("n. 5");
+        List<String> list3rev = clearReverseList(l3);
+        System.out.println(list3rev);
+        System.out.println("остался таким же " + l3);
+        reverseList(l3);
+        System.out.println(l3);
+        System.out.println("n. 6");
         clearDeleteEven(l1);
         deleteEven(l4);
         clearDeleteInString(l4);
         deleteInString(l4);
         clearDeleteInInteger(makeList());
         deleteInInteger(makeList());
-        System.out.println("n. 6");
+        System.out.println("n. 7");
         workWithFile("C:\\Users\\Elena\\IdeaProjects\\Java 3sem\\src\\text.txt");
     }
 
@@ -48,32 +42,45 @@ public class Collections {
         return a;
     }
 
-    public static void joinLists(List<String> a, List<String> b) {
-        a.addAll(b);
-        System.out.println(a);
+    public static void printList(List<String> a){
+
+        System.out.println("Элементов в списке: " + a.size());
+        for(String element: a){
+            System.out.println(element);
+        }
     }
 
-    public static void clearReverseList(List<String> a) {
-        int k = 0;
+    public static void printListWithIndexes(List<String> a){
+
+        System.out.println("Элементов в списке: " + a.size());
+        for(int i = 0; i < a.size(); i++){
+            System.out.println(i + ": " + a.get(i));
+        }
+    }
+
+    public static List<String> joinLists(List<String> a, List<String> b) {
+        ArrayList<String> new_list = new ArrayList<>(a);
+        new_list.addAll(b);
+        return(new_list);
+    }
+
+    public static List<String> clearReverseList(List<String> a) {
         ArrayList<String> reverseA = new ArrayList<>();
 
-        for (String i : a) k++;
-        while (k > 0) {
-            reverseA.add(a.get(k - 1));
-            k--;
+        for (int i = 0; i < a.size(); i++){
+            reverseA.add(i, a.get(a.size() - i - 1));
         }
-        System.out.println(reverseA); //новый список
-        System.out.println(a); //старый остался неизмененным
+        return(reverseA); //новый список
     }
 
-    public static void reverseList(List<String> a) {
+    public static List<String> reverseList(List<String> a) {
         ArrayList<String> helpA = new ArrayList<>(a);
 
         a.clear();
         for (int i = 0; i < helpA.size(); i++){
             a.add(i, helpA.get(helpA.size() - i - 1));
         }
-        System.out.println(a); //старый измененный список
+        return(a); //старый измененный список
     }
 
     public static void clearDeleteEven(List<String> a) {
