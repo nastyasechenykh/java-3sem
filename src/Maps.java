@@ -12,19 +12,17 @@ public class Maps {
         for (int i = 0; i < set1.length; i++) {
             rus.put(set1[i], set2[i]);
         }
-        System.out.println(Transliterator(rus, "терминатор"));
+        System.out.println(transliterator(rus, "терминатор"));
         System.out.println(letterQuantity("banana"));
         System.out.println(letterIndexList("banana"));
         frequencyDict("C:\\Users\\Elena\\IdeaProjects\\Java 3sem\\src\\girls.txt");
     }
 
-    public static String Transliterator(Map<Character, String> a, String word) {
+    public static String transliterator(Map<Character, String> a, String word) {
         String newWord = "";
 
         for (int i = 0; i < word.length(); i++) {
-            for (Character key : a.keySet()) {
-                if (word.charAt(i) == key) newWord += a.get(key);
-            }
+            newWord += a.get(word.charAt(i));
         }
         return newWord;
     }
@@ -54,15 +52,29 @@ public class Maps {
     public static void frequencyDict(String S) throws IOException {
         Path f = Paths.get(S);
         Map<String, Integer> dictionary = new HashMap<>();
+        Map<String, Integer> dictionary2 = new TreeMap<>();
+        Map<String, Integer> dictionary3 = new LinkedHashMap<>();
+        TreeMap<String, Integer> sortedMap = new TreeMap<>();
 
         try (Scanner inc = new Scanner(f)) {
             while (inc.hasNext()) {
+                inc.useDelimiter("[^А-я]");
                 String word = inc.next().toLowerCase();
-                if (!dictionary.keySet().contains(word)) dictionary.put(word, 1);
-                else dictionary.put(word, dictionary.get(word) + 1);
-            } //inc.useDelimiter(".");
+                if (!dictionary.keySet().contains(word)) {
+                    dictionary.put(word, 1);
+                    dictionary2.put(word, 1);
+                    dictionary3.put(word, 1);
+                } else {
+                    dictionary.put(word, dictionary.get(word) + 1);
+                    dictionary2.put(word, dictionary2.get(word) + 1);
+                    dictionary3.put(word, dictionary3.get(word) + 1);
+                } sortedMap.putAll(dictionary);
+            }
             try (PrintStream ps = new PrintStream("C:\\Users\\Elena\\IdeaProjects\\Java 3sem\\src\\dict.txt", "utf8")) {
                 ps.println(dictionary);
+                ps.println(dictionary2);
+                ps.println(dictionary3);
+                ps.println(sortedMap);
             }
         }
     }
