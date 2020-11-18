@@ -15,7 +15,7 @@ public class Maps {
         System.out.println(transliterator(rus, "терминатор"));
         System.out.println(letterQuantity("banana"));
         System.out.println(letterIndexList("banana"));
-        frequencyDict("C:\\Users\\Elena\\IdeaProjects\\Java 3sem\\src\\girls.txt");
+        frequencyDict("src/girls.txt");
     }
 
     public static String transliterator(Map<Character, String> a, String word) {
@@ -31,8 +31,9 @@ public class Maps {
         Map<Character, Integer> amount = new HashMap<>();
 
         for (int i = 0; i < word.length(); i++) {
-            if (!amount.keySet().contains(word.charAt(i))) amount.put(word.charAt(i), 1);
-            else amount.put(word.charAt(i), amount.get(word.charAt(i)) + 1);
+            char letter = word.charAt(i);
+            if (!amount.containsKey(letter)) amount.put(letter, 1);
+            else amount.put(letter, amount.get(letter) + 1);
         }
         return amount;
     }
@@ -41,10 +42,11 @@ public class Maps {
         Map<Character, List<Integer>> amount = new HashMap<>();
 
         for (int i = 0; i < word.length(); i++) {
-            if (!amount.keySet().contains(word.charAt(i))) {
-                amount.put(word.charAt(i), new ArrayList<>());
+            char letter = word.charAt(i);
+            if (!amount.containsKey(letter)) {
+                amount.put(letter, new ArrayList<>());
             }
-            amount.get(word.charAt(i)).add(i);
+            amount.get(letter).add(i);
         }
         return amount;
     }
@@ -58,7 +60,7 @@ public class Maps {
 
         try (Scanner inc = new Scanner(f)) {
             while (inc.hasNext()) {
-                inc.useDelimiter("[^А-я]");
+                inc.useDelimiter("[^а-яА-Я]+");
                 String word = inc.next().toLowerCase();
                 if (!dictionary.keySet().contains(word)) {
                     dictionary.put(word, 1);
