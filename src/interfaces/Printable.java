@@ -1,4 +1,4 @@
-package workWithInterface;
+package interfaces;
 
 public interface Printable {
     void print();

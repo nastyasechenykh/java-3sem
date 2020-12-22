@@ -1,4 +1,4 @@
-package workWithInterface;
+package interfaces;
 
 public class PrintableLetter implements Printable{
     private String symbol;

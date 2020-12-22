@@ -1,4 +1,4 @@
-package workWithInterface;
+package interfaces;
 
 public class ExperimentsWithDrawing {
     public static void main(String[] args) {

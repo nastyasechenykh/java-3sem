@@ -1,6 +1,6 @@
-package workWithInterface;
+package interfaces;
 
-public class Square extends Parallelogram {
+public class Square extends Rectangle {
     public int side;
 
     public Square(int s){
@@ -18,7 +18,7 @@ public class Square extends Parallelogram {
         return 4 * side;
     } */
 
-    //@Override
+    @Override
     public String info() {
         return "Квадрат со стороной " + side;
     }

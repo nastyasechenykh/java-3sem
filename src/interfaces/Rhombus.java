@@ -1,12 +1,12 @@
-package workWithInterface;
+package interfaces;
 import static java.lang.Math.sqrt;
 
 public class Rhombus extends Parallelogram {
-    private int dia1;
-    private int dia2;
+    private double dia1;
+    private double dia2;
 
-    public Rhombus(int d1, int d2){
-        super( (int) sqrt(d1* d1/4 + d2 * d2/4), (int)sqrt(d1* d1/4 + d2 * d2/4));
+    public Rhombus(double d1, double d2){
+        super(sqrt(d1* d1/4 + d2 * d2/4), sqrt(d1* d1/4 + d2 * d2/4));
         this.dia1 = d1;
         this.dia2 = d2;
     }
@@ -21,7 +21,7 @@ public class Rhombus extends Parallelogram {
         return 2 * sqrt(dia1 * dia1 + dia2 * dia2);
     } */
 
-    //@Override
+    @Override
     public String info() {
         return "Ромб с диагоналями " + dia1 + " и " + dia2;
     }

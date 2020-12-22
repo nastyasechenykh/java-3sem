@@ -1,4 +1,4 @@
-package workWithInterface;
+package interfaces;
 
 public class PrintableString implements Printable{
     private String line;

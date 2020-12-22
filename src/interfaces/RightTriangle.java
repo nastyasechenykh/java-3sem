@@ -1,10 +1,11 @@
-package workWithInterface;
+package interfaces;
 
-public class RightTriangle implements Figure {
-    private int leg1;
-    private int leg2;
+public class RightTriangle extends Triangle {
+    private double leg1;
+    private double leg2;
 
-    public RightTriangle(int a, int b) {
+    public RightTriangle(double a, double b, double c) {
+        super(a, b, c);
         this.leg1 = a;
         this.leg2 = b;
     }

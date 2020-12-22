@@ -1,4 +1,4 @@
-package workWithInterface;
+package interfaces;
 
 public class PrintableExamples {
     public static void main(String[] args) {

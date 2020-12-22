@@ -1,10 +1,11 @@
-package workWithInterface;
+package interfaces;
 import static java.lang.Math.sqrt;
 
-public class EquilateralTriangle implements Figure {
-    private int side;
+public class EquilateralTriangle extends Triangle {
+    private double side;
 
-    public EquilateralTriangle(int s){
+    public EquilateralTriangle(double s){
+        super(s, s, s);
         this.side = s;
     }
 

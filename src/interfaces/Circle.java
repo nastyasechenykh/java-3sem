@@ -1,4 +1,4 @@
-package workWithInterface;
+package interfaces;
 
 public class Circle implements Figure {
     private int radius;
@@ -24,7 +24,7 @@ public class Circle implements Figure {
     }
 
     @Override
-    public double dCapacity(){
+    public double capacity(){
         return 1 / (4 * pi);
     }
 }
