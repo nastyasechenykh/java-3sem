@@ -16,10 +16,10 @@ public class Rhombus extends Parallelogram {
         return dia1 * dia2 * 0.5;
     }
 
-    /* @Override
+    @Override
     public double perimiter() {
         return 2 * sqrt(dia1 * dia1 + dia2 * dia2);
-    } */
+    }
 
     @Override
     public String info() {

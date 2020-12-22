@@ -14,10 +14,10 @@ public class Rectangle extends Parallelogram {
     }
 
 
-    /* @Override
+     @Override
     public double perimiter() {
-        return 2 * (length + width);
-    } */
+        return 2 * (l + w);
+    }
 
     @Override
     public String info() {
